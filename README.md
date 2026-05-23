@@ -1,3 +1,3 @@
-#Moja začiatky s picoCTF
+# Moje začiatky s picoCTF 
 
-Tento repozitár bude slúžiť ako zoznam úloh z picoCTF ktoré som vyriešil aj s postupom riešenia
+## Tento repozitár bude slúžiť ako zoznam úloh z picoCTF ktoré som vyriešil aj s postupom môjho riešenia
