@@ -22,12 +22,7 @@ Najprv som si skopíroval odkaz na súbor z picoCTF a pomocou príkazu wget som 
 
 ```wget https://challenge-files.picoctf.net/c_wily_courier/4acf636990e4540d6fc36684b1256e625c0617d7cb01727e12e3f9606d89fe45/flag```
 
-
-2. Overenie, že sa súbor stiahol (ls)
-
-Príkazom ```ls``` som si overil, či sa v mojom priečinku nachádza súbor s názvom flag. 
-
-3. Prečítanie obsahu súboru (cat)
+2. Prečítanie obsahu súboru (cat)
 
 Nápoveda spomínala príkaz cat. Pozrel som si jeho manuál cez man cat a zistil som, že slúži na: zreťaziť súbory a vypísať na štandardný výstup.
 Zadal som teda do terminálu:
