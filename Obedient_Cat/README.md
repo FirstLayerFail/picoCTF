@@ -1,75 +1,65 @@
-## Úloha: Obedient Cat (Poslušná mačka)
+## Obedient Cat
 
-Táto úloha ma naučila, ako stiahnuť súbor priamo z internetu cez terminál a ako si rýchlo zobraziť jeho obsah bez toho, aby som musel "klasicky" otvárať súbor.
+Úloha ma naučila sťahovať súbory priamo z internetu cez terminál a zobraziť ich obsah — bez prehliadača, bez klikania.
 
-Čo bolo zadanie?
+---
 
-V zadaní bol priložený odkaz na stiahnutie súboru s názvom flag. Úloha hovorila, že flag je v tomto súbore priamo "na očiach" (plain sight).
+### Zadanie
 
-Mal som k dispozícii tieto nápovedy:
+Priložený bol odkaz na stiahnutie súboru s názvom `flag`. Úloha hovorila, že flag je v súbore priamo "na očiach" (plain sight).
 
-Akékoľvek rady týkajúce sa zadávania príkazu do terminálu (napríklad nasledujúceho) budú začínať znakom „$“... všetko za znakom dolára bude napísané (alebo skopírované a vložené) do vášho terminálu.
+---
 
-Na stiahnutie súboru mám použiť príkaz wget s odkazom.
+### Postup
 
-Mám si pozrieť manuál k príkazu cat pomocou príkazu man cat.
+**1. Stiahnutie súboru**
 
-Ako som postupoval
-
-1. Stiahnutie súboru (wget)
-
-Najprv som si skopíroval odkaz na súbor z picoCTF a pomocou príkazu wget som ho stiahol priamo do svojho PC:
-
-```wget https://challenge-files.picoctf.net/c_wily_courier/4acf636990e4540d6fc36684b1256e625c0617d7cb01727e12e3f9606d89fe45/flag```
-
-2. Prečítanie obsahu súboru (cat)
-
-Nápoveda spomínala príkaz cat. Pozrel som si jeho manuál cez man cat a zistil som, že slúži na: zreťaziť súbory a vypísať na štandardný výstup.
-Zadal som teda do terminálu:
-
-```cat flag```
-
-
-Akonáhle som stlačil Enter, terminál mi okamžite vypísal hľadaný flag.
-
-Môj reálny výpis z terminálu
-
-(Skutočný flag som skryl)
+```bash
+wget https://challenge-files.picoctf.net/.../flag
 ```
-tomas@Legion-mint:~$ wget https://challenge-files.picoctf.net/c_wily_courier/4acf636990e4540d6fc36684b1256e625c0617d7cb01727e12e3f9606d89fe45/flag
 
---2026-05-23 15:52:40--  https://challenge-files.picoctf.net/c_wily_courier/4acf636990e4540d6fc36684b1256e625c0617d7cb01727e12e3f9606d89fe45/flag
+`wget` stiahne súbor z URL priamo do aktuálneho priečinka. Hodí sa hlavne tam, kde nemáš grafické rozhranie — napríklad na vzdialených serveroch. Ak by si chcel súbor uložiť pod iným názvom, použiješ `-O`:
 
-Prevádza sa challenge-files.picoctf.net (challenge-files.picoctf.net) na IP adresu... 13.227.192.126, 13.227.192.19, 13.227.192.35, ...
+```bash
+wget -O mojflag.txt https://...
+```
 
-Pripájanie k challenge-files.picoctf.net (challenge-files.picoctf.net)|13.227.192.126|:443... pripojené.
+**2. Zobrazenie obsahu**
 
-HTTP požiadavka odoslaná, čakám na odpoveď... 200 OK
+```bash
+cat flag
+```
 
-Dĺžka: 34 [application/octet-stream]
+`cat` vypíše obsah súboru do terminálu. Funguje spoľahlivo na plain text — ak by bol súbor binárny (obrázok, zip, spustiteľný súbor), výstup by bol nezmysel. Preto je dobrým zvykom začínať príkazom `file`, ktorý ti povie čo súbor vlastne je:
 
-Ukladá sa do: ‘flag’
+```bash
+file flag
+# flag: ASCII text
+```
 
-flag                100%[===================>]      34  --.-KB/s    za 0s      
+---
 
-2026-05-23 15:52:41 (41,5 MB/s) - ‘flag’ uložené [34/34]
+### Reálny výstup z terminálu
 
-tomas@Legion-mint:~$ ls
- Documents   flag    Obrázky   Stiahnuté   Verejné  'VirtualBox VMs'
- Dokumenty   Hudba   Plocha    Šablóny     Video
-tomas@Legion-mint:~$ man cat
+```
+tomas@Legion-mint:~$ wget https://challenge-files.picoctf.net/.../flag
+--2026-05-23 15:52:40--  https://challenge-files.picoctf.net/.../flag
+...
+flag                100%[===================>]      34  --.-KB/s    za 0s
+2026-05-23 15:52:41 (41,5 MB/s) - 'flag' uložené [34/34]
+
 tomas@Legion-mint:~$ cat flag
-picoCTF{***_skrytý_flag_***}
+picoCTF{skrytý_flag}
 ```
 
-Získaný flag: picoCTF{***_skrytý_flag_***}
+---
 
-## Čo som sa vďaka tejto úlohe naučil?
+### Čo som sa naučil
 
-Príkaz ```wget```: Slúži na sťahovanie súborov z internetu priamo cez príkazový riadok.
-
-Príkaz ```ls```: zobrazenie súborov v priečinku
-
-Príkaz ```cat```: Najrýchlejší spôsob, ako v termináli zobraziť obsah akéhokoľvek textového súboru.
-
-Príkaz ```man```: Skratka pre manual. Ak pred akýkoľvek príkaz napíšem man (napr. man cat), Linux mi ukáže podrobnú príručku k tomuto príkazu. Z manuálu sa vyskočí stlačením písmena q (quit).
+| Príkaz / Pojem | Čo znamená |
+|----------------|------------|
+| `wget URL` | stiahne súbor z internetu priamo do aktuálneho priečinka |
+| `cat súbor` | vypíše obsah textového súboru do terminálu |
+| `file súbor` | ukáže typ súboru — dobrý prvý krok pri každej CTF úlohe |
+| `man príkaz` | zobrazí manuál k príkazu — vyskočíš z neho cez `q` |
+| `wget -O názov URL` | stiahne súbor pod vlastným názvom |
