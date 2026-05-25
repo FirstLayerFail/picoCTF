@@ -1,6 +1,6 @@
 ## Super SSH
 
-Úloha ma naučila pripojiť sa na vzdialený server cez SSH a pracovať s nestandardným portom.
+Úloha ma naučila pripojiť sa na vzdialený server cez SSH a pracovať s neštandardným portom.
 
 ---
 
