@@ -1,91 +1,77 @@
-## Úloha: Tab, Tab, Attack (Útok klávesom Tab)
+## Tab, Tab, Attack
 
-Táto úloha ma naučila trik pre prácu v Linux termináli – dopĺňanie názvov súborov a priečinkov pomocou klávesu Tab.
+Úloha ma naučila dopĺňanie názvov súborov a priečinkov pomocou klávesu Tab — nevyhnutný trik pri práci s dlhými názvami v termináli.
 
-Čo bolo zadanie?
+---
 
-Dostal som na stiahnutie súbor Addadshashanammu.zip. Zadanie hovorilo, že po rozbalení sa dá táto úloha vyriešiť na 11 stlačení klávesov (väčšinou stláčaním klávesu Tab).
+### Zadanie
 
-Nápoveda hovorila:
+Na stiahnutie bol priložený súbor `Addadshashanammu.zip`. Po rozbalení sa úloha dá vyriešiť na 11 stlačení klávesov — väčšinou pomocou Tab.
 
-Dopĺňanie pomocou Tab v termináli ti pridá roky života, najmä pri dlhých a zložitých štruktúrach priečinkov.
+---
 
-Ako som postupoval
+### Postup
 
-1. Stiahnutie súboru (wget)
+**1. Stiahnutie a rozbalenie archívu**
 
-Skopíroval som odkaz na súbor z picoCTF a pomocou príkazu ```wget``` som ho stiahol priamo do svojho PC:
+```bash
+wget https://challenge-files.picoctf.net/.../Addadshashanammu.zip
+unzip Add<Tab>
+```
 
-2. Rozbalenie archívu (unzip a Tab)
+Namiesto písania celého názvu stačí napísať začiatok a stlačiť Tab — terminál doplní zvyšok sám.
 
-Namiesto pracného písania celého názvu archívu som napísal iba začiatok a stlačil Tab. Terminál názov okamžite doplnil sám:
+**2. Prechod cez hlbokú štruktúru priečinkov**
 
-```unzip Addadshashanammu.zip```
+```bash
+cd Add<Tab><Tab><Tab><Tab><Tab><Tab><Tab>
+```
 
-
-3. Prechod cez dĺhu štruktúru priečinkov
-
-Vytvoril sa priečinok s dlhým názvom. Napísal som:
-
-```cd Add```
-
-
-a stlačil Tab. Keďže v každom podpriečinku bol len jeden ďalší priečinok, stačilo mi opakovane stláčať Tab. Linux sám dopĺňal lomky a ďalšie priečinky až na koniec cesty:
-
-```Addadshashanammu/Almurbalarammi/ ... /Ularradallaku```
-
-
-Nakoniec som len stlačil Enter.
-
-4. Spustenie programu (./)
-
-V cieľovom priečinku som si príkazom ```ls``` zobrazil obsah. Nachádzal sa tam spustiteľný súbor (program).
-
-V Linuxe spúšťame programy v aktuálnom priečinku pomocou predpony ./ pred názvom súboru. Napísal som to teda na začiatok názvu a opäť stlačil Tab, ktorý ho doplnil:
-
-```./fang-of-haynekhtnamet```
-
-
-Po stlačení Enteru program spustilo a vypísal mi hľadaný flag.
-
-Môj reálny výpis z terminálu
-
-(Skutočný flag som schoval)
+V každom podpriečinku bol len jeden ďalší priečinok, takže Tab vždy doplnil celý názov aj lomku automaticky. Výsledná cesta:
 
 ```
-tomas@Legion-mint:~$ wget https://challenge-files.picoctf.net/c_wily_courier/ce53ef9432bf367be41e465224d721c1187c39debcd758efcd28e99a6b7ff7a4/Addadshashanammu.zip
---2026-05-23 18:28:01--  https://challenge-files.picoctf.net/c_wily_courier/ce53ef9432bf367be41e465224d721c1187c39debcd758efcd28e99a6b7ff7a4/Addadshashanammu.zip
-Prevádza sa challenge-files.picoctf.net (challenge-files.picoctf.net) na IP adresu... 13.227.192.19, 13.227.192.102, 13.227.192.35, ...
-Pripájanie k challenge-files.picoctf.net (challenge-files.picoctf.net)|13.227.192.19|:443... pripojené.
-HTTP požiadavka odoslaná, čakám na odpoveď... 200 OK
-Dĺžka: 5166 (5,0K) [application/octet-stream]
-Ukladá sa do: ‘Addadshashanammu.zip’
+Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku/
+```
 
-Addadshashanammu.zip       100%[========================================>]   5,04K  --.-KB/s    za 0s      
+**3. Spustenie programu**
 
-2026-05-23 18:28:02 (1,27 GB/s) - ‘Addadshashanammu.zip’ uložené [5166/5166]
+```bash
+ls
+./fang<Tab>
+```
 
-tomas@Legion-mint:~$ unzip Addadshashanammu.zip 
+`ls` ukázal obsah priečinka — spustiteľný súbor a jeho zdrojový kód `.c`. V Linuxe sa programy v aktuálnom priečinku spúšťajú s predponou `./` — bez nej terminál príkaz nenájde (z bezpečnostných dôvodov nehľadá v aktuálnom priečinku automaticky). Tab doplnil zvyšok názvu.
+
+---
+
+### Reálny výstup z terminálu
+
+```
+tomas@Legion-mint:~$ unzip Addadshashanammu.zip
 Archive:  Addadshashanammu.zip
 creating: Addadshashanammu/
-creating: Addadshashanammu/Almurbalarammi/  
-creating: Addadshashanammu/Almurbalarammi/Ashalmimilkala/
-creating: Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/
-creating: Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/
-creating: Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/
+creating: Addadshashanammu/Almurbalarammi/
+...
 creating: Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku/
-extracting: Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku/fang-of-haynekhtnamet.c 
-inflating: Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku/fang-of-haynekhtnamet 
+extracting: .../fang-of-haynekhtnamet.c
+inflating: .../fang-of-haynekhtnamet
+
 tomas@Legion-mint:~$ cd Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku/
-tomas@Legion-mint:~/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku$ ls
+
+tomas@Legion-mint:~/Addadshashanammu/...$ ls
 fang-of-haynekhtnamet  fang-of-haynekhtnamet.c
-tomas@Legion-mint:~/Addadshashanammu/Almurbalarammi/Ashalmimilkala/Assurnabitashpi/Maelkashishi/Onnissiralis/Ularradallaku$ ./fang-of-haynekhtnamet 
-*ZAP!* picoCTF{***_skrytý_flag_***}
+
+tomas@Legion-mint:~/Addadshashanammu/...$ ./fang-of-haynekhtnamet
+*ZAP!* picoCTF{skrytý_flag}
 ```
-Získaný flag: picoCTF{***_skrytý_flag_***}
 
-## Čo som sa vďaka tejto úlohe naučil?
+---
 
-Dopĺňanie pomocou Tab: Ak napíšem prvé písmená príkazu, priečinka alebo súboru a stlačím Tab, terminál ho sám dopíše.
+### Čo som sa naučil
 
-Spúšťanie súborov pomocou ```./```: V Linuxe nestačí len napísať názov programu, ak sa nachádza v aktuálnom priečinku. Z bezpečnostných dôvodov musíme pred názov pridať ```./``` (napr. ./program).
+| Príkaz / Pojem | Čo znamená |
+|----------------|------------|
+| `Tab` | doplní názov súboru alebo priečinka — ak je zhoda jednoznačná, doplní celý názov |
+| `Tab Tab` | ak je viac možností, vypíše ich všetky |
+| `./program` | spustí program v aktuálnom priečinku — `./` je povinné, Linux nehľadá v aktuálnom priečinku automaticky |
+| `unzip súbor.zip` | rozbalí ZIP archív |
