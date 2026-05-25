@@ -16,7 +16,7 @@ Priložený bol odkaz na webovú stránku. Flag bol rozdelený na tri časti, ka
 
 Po otvorení stránky som stlačil `F12` a prešiel na kartu **Elements**. V tele stránky `<body>`, v bloku s triedou `tabcontent` (záložka "How"), som v HTML komentári našiel prvú časť flagu.
 
-![HTML flag v komentári](screenshoty/html.png)
+![HTML flag v komentári](html.png)
 
 HTML komentáre vyzerajú takto a bežný návštevník ich nevidí, ale v zdrojovom kóde sú:
 ```html
@@ -27,13 +27,13 @@ HTML komentáre vyzerajú takto a bežný návštevník ich nevidí, ale v zdroj
 
 Na karte **Sources** som otvoril súbor `mycss.css`. V komentároch na konci súboru bola druhá časť flagu.
 
-![CSS flag v komentári](screenshoty/css.png)
+![CSS flag v komentári](css.png)
 
 **3. Inšpekcia JavaScriptu — karta Sources**
 
 V tej istej karte **Sources** som otvoril `myjs.js` a našiel tretiu časť flagu.
 
-![JS flag v komentári](screenshoty/js.png)
+![JS flag v komentári](js.png)
 
 Po spojení všetkých troch častí som získal kompletný flag:
 - HTML: `picoCTF{1/3`
